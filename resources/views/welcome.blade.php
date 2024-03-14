@@ -14,16 +14,11 @@
 
 
 
-    <div class="d-flex">
-<a class="ps-4" href="http://127.0.0.1:8000/">homepage</a>
-
-
-<a  class="ps-4" href="http://127.0.0.1:8000/contatti">Contatti</a>
-
-
-<a  class="ps-4" href="http://127.0.0.1:8000/chi-sono">about</a>
-
-
+    <div class="d-flex ms-4">
+<a class="ms-3" href=" {{route('welcome')}}">home</a>
+<a class="ms-3" class href=" {{route('contacts')}}">contact</a>
+<a class="ms-3" href=" {{route('about-us')}}">about-us</a>
+<a class="ms-3" href=" {{route('articles')}}">articles</a>
 </div>
 
 
@@ -34,8 +29,8 @@
 
 
 
+<script>
 
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</script>
   </body>
 </html>

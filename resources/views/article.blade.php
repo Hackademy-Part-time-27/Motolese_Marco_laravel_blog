@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contatti</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Document</title>
 </head>
 <body>
     
+</body>
+</html>
+
 
 <div class="d-flex ms-4">
 <a class="ms-3" href=" {{route('welcome')}}">home</a>
@@ -19,10 +21,20 @@
 
 
 
-    <h1> {{$titolo}} </h1>
 
 
 
-    <p>  {{$descrizione}} </p>
-</body>
-</html>
+
+
+
+
+<h1 class="title mt-5 mb-5">{{ $article['title'] }} </h1>
+
+<div>
+<h2 class="mb-3"> {{ $article['category'] }} </h2>
+
+<h3> {{ $article['description'] }} </h3>
+</div>
+<div>
+  <button> <a href= "/articles">Torna agli articoli</a></button>
+</div>
