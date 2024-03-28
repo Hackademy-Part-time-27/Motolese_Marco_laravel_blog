@@ -3,7 +3,9 @@
 
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ArticleController;
 use Illuminate\Support\Facades\Route;
+
 
 Route::get('/', [PageController::class,'welcome','title'=>'$title'])->name('welcome');
 ;
@@ -24,7 +26,8 @@ Route::get('/chi-sono',[PageController::class,'aboutUs'])->name('about-us');
 
 
 
-
 Route::get('/articles',[PageController::class,'articles'])->name('articles');
+
+Route::get('/articles/create',[ArticleController::class,'create'])->name('articles.create');
 
 Route::get('/articolo/{article}',[PageController::class,'article'] )->name('article');

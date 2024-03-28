@@ -3,35 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Article;
 class PageController extends Controller
 {
-    public $articles;
-public function __construct() {
-    $this->articles=
-        [
-            [
-            'title' => 'iphone 14',
-            'category' => 'elettronica',
-            'description' => 'IPHONE 14 ',
-            'visible'=> true
+  
 
-            ],
-            [
-            'title' => 'iphone 13',
-            'category' => 'elettronica',
-            'description' => 'IPHONE 13 128GB',
-            'visible'=> true
-            ],
-            [
-                'title' => 'iphone 15',
-                'category' => 'elettronica',
-                'description' => '1PHONE 15 256GB',
-                'visible'=> false
-                ],
-        ];
-    
-}
+
 
 
 
@@ -53,15 +30,15 @@ public function aboutUs(){
 
 public function articles(){
 
-    
-         return view('articles',['articles'=> $this->articles]);
+    $articles = Article::where('visible',true)->get();
+         return view('articles',['articles'=> $articles]);
         
 }
 
 
-public function article($article){
+public function article(Article $article){
     
-    return view('article', ['article' => $this->articles[$article]]);
+    return view('article', ['article' => $article]);
    
  
      
