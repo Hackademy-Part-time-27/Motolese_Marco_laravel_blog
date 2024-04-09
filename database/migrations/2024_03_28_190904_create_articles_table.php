@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('title',150);
             $table->string('category',50);
             $table->string('description',255);
-            $table->text('body')->nullable();
+            $table->text('body',5000);
             $table->boolean('visible')->default(true);
             $table->timestamps();
         });
