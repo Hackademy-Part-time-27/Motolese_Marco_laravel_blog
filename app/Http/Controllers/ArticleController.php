@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreArticleRequest;
 use Illuminate\Http\Request;
 use App\Models\Article;
+use App\Models\Category;
+
 
 class ArticleController extends Controller
 {
@@ -40,5 +42,24 @@ public function index(){
     
     }
 
+    
+    public function edit(Article $article)
+    {
+        return view('articles.edit', ['article' => $article, 'categories' => Category::all()]);
+    }
+
+    public function update(Request $request, Article $article,)
+    {
+        $article->update($request->all());
+
+        return redirect()->back()->with(['success' => 'Articolo modificato correttamente!']);
+    }
+
+    public function destroy(Article $article)
+    {
+        $article->delete();
+
+        return redirect()->back()->with(['success' => 'Articolo eliminato!']);
+    }
 
 }
