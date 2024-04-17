@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreArticleRequest;
 use Illuminate\Http\Request;
 use App\Models\Article;
-use App\Models\Category;
+
 
 
 class ArticleController extends Controller
@@ -17,7 +17,7 @@ public function index(){
 
 
     public function create(){
-        return view('articles.create');
+        return view('articles.create', ['categories' => \App\Models\Category::all()]);
     }
 
     public function store(Request $request){

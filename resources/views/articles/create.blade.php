@@ -38,17 +38,16 @@
            @error('title') <p class="text-danger small fw-bold">{{$message}}</p> @enderror
         </div>
 
-
         <div class="col-12">
-           
-           <label for="category">Categoria</label>
-           <input type="text" name="category" id="category" class="form-control @error('category') is-invalid @enderror"  value="{{ old('category')}}">
-           @error('category') <p class="text-danger small fw-bold">{{$message}}</p> @enderror
-        
-           </div>
-
-
-          
+                     <label for="category">Categoria</label>
+                     <select name="category" id="category" class="form-control">
+                        @foreach($categories as $category)
+                        <option value="{{ $category->name }}">{{ $category->name }}</option>
+                        @endforeach
+                     </select>
+                     @error('category') <span class="text-danger small fw-bold">{{ $message }}</span> @enderror
+      </div>
+       
 
 
            <div class="col-12">

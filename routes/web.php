@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AccountController;
@@ -48,5 +49,6 @@ Route::get('/articolo/{article}',[PageController::class,'article'] )->name('arti
 
             Route::delete('/articles/destroy', [ArticleController::class, 'destroy'])->name('articles.destroy');
             
-            Route::resource('categories', \App\Http\Controllers\CategoryController::class);
+            Route::resource('/categories', CategoryController::class);
+
 });
