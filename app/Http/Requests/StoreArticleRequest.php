@@ -23,7 +23,7 @@ class StoreArticleRequest extends FormRequest
     {
         return [
             'title'=>'required|max:500',
-            'category'=>'required|max:50',
+            'category_id'=>'required',
             'description'=>'required|max:255',
             'body'=>'|max:5000',
         ];
@@ -34,8 +34,8 @@ class StoreArticleRequest extends FormRequest
                 return[
         'title.required' => 'Il campo titolo è obbligatorio',
         'title.max' => 'Il campo titolo deve contenere massimo :max caratteri',
-        'category.required' => 'Il campo categoria è obbligatorio',
-        'category.max' => 'Il campo categoria deve contenere massimo :max caratteri',
+        'category_id.required' => 'Il campo categoria è obbligatorio',
+        'category_id.max' => 'Il campo categoria deve contenere massimo :max caratteri',
         'description.required' => 'Il campo descrizione è obbligatorio',
         'description.max' => 'Il campo descrizione deve contenere massimo :max caratteri',
         'body.max' => 'Il campo body deve contenere massimo :max caratteri',

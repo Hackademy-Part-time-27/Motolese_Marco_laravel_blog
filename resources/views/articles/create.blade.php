@@ -39,13 +39,13 @@
         </div>
 
         <div class="col-12">
-                     <label for="category">Categoria</label>
-                     <select name="category" id="category" class="form-control">
-                        @foreach($categories as $category)
-                        <option value="{{ $category->name }}">{{ $category->name }}</option>
-                        @endforeach
-                     </select>
-                     @error('category') <span class="text-danger small fw-bold">{{ $message }}</span> @enderror
+                        <label for="category_id">Categoria</label>
+                        <select name="category_id" id="category_id" class="form-control">
+                           @foreach($categories as $category)
+                           <option value="{{ $category->id }}">{{ $category->name }}</option>
+                           @endforeach
+                        </select>
+                        @error('category_id') <span class="text-danger small fw-bold">{{ $message }}</span> @enderror
       </div>
        
 
@@ -101,6 +101,7 @@
 
 
 
+</div>
 
        </div>
 

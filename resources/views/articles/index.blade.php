@@ -31,10 +31,17 @@
 <tbody>
     @foreach($articles as $article)
 <tr>
+
+
 <td>{{ $article->id }}</td>
 <td>{{ $article->title }}</td>
-<td>{{ $article->category }}</td>
+@if(! $article->category_id)
+<td></td>
+@else
+<td>{{ $article->category->id }}</td>
+@endif
 <td>
+
     @if($article->visible)
 <span class="badge text bg-success">Si</span>
     @else

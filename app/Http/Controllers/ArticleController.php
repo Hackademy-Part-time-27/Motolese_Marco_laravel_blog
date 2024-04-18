@@ -4,14 +4,14 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreArticleRequest;
 use Illuminate\Http\Request;
 use App\Models\Article;
-
+use App\Models\Category;
 
 
 class ArticleController extends Controller
 {
 
 public function index(){
-    return view ('articles.index',['articles' => Article::all()]);
+    return view ('articles.index',['articles' => Article::orderBy('id','DESC')->get()]);
 }
 
 
@@ -20,7 +20,7 @@ public function index(){
         return view('articles.create', ['categories' => \App\Models\Category::all()]);
     }
 
-    public function store(Request $request){
+    public function store(StoreArticleRequest $request){
 
         $article = Article::create($request->all());
 
