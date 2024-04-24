@@ -43,4 +43,11 @@ public function article(Article $article){
  
      
  }
+
+
+
+ public function searchUsers(){
+    return view('search-users');
+ }
+
 }

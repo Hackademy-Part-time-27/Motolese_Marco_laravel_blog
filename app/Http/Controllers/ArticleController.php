@@ -11,8 +11,12 @@ class ArticleController extends Controller
 {
 
 public function index(){
-    return view ('articles.index',['articles' => Article::orderBy('id','DESC')->get()]);
-}
+
+    $articles = Article::where('user_id', auth()->user()->id)
+    ->orderBy('created_at', 'DESC')
+    //->withTrashed()
+    ->where('visible', true)
+    ->get();}
 
 
 

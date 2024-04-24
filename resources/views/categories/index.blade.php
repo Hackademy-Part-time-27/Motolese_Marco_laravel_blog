@@ -26,7 +26,7 @@
                     <ul>
 
                             @foreach($category->articles as $article)
-                            <li>{{$article->title}}</li>
+                            <li><a href="{{route('article',$article)}}" target="_blank">{{ $article->title }}</a></li>
                             @endforeach
 
 
