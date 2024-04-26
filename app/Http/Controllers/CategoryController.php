@@ -21,7 +21,12 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('categories.create');
+        return view('categories.form', [
+            'title' => 'Crea Categoria',
+            'action' => route('categories.store'),
+            'category' => new Category(),
+            'button_text' => 'Crea Categoria',
+        ]);
     }
 
     /**
@@ -47,7 +52,12 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('categories.edit', ['category' => $category]);
+        return view('categories.form', [
+            'title' => 'Crea Categoria',
+            'action' => route('categories.store'),
+            'category' => new Category(),
+            'button_text' => 'Crea Categoria',
+        ]);
     }
 
     /**
@@ -65,6 +75,9 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
+        if ($category->articles->count()){
+            return redirect()->back()->with(['warning' => 'Non puoi cancellare questa categoria!']);
+        }
         $category->delete();
 
         return redirect()->back()->with(['success' => 'Categoria eliminata!']);

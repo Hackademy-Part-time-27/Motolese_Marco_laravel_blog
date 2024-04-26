@@ -13,7 +13,9 @@ class PageController extends Controller
 
 
 public function welcome(){
-    return view('welcome');
+    $articles = Article::orderBy('created_at', 'DESC')->take(5)->get();
+    return view('welcome', ['title' => 'sdsfdsfasdf', 'articles' => $articles]);
+
 }
 
 

@@ -12,38 +12,46 @@ class ArticleController extends Controller
 
 public function index(){
 
-    $articles = Article::where('user_id', auth()->user()->id)
-    ->orderBy('created_at', 'DESC')
-    //->withTrashed()
-    ->where('visible', true)
-    ->get();}
+    
+        $articles = Article::where('user_id', auth()->user()->id)
+                            ->orderBy('created_at', 'DESC')
+                            ->get();
+
+        return view('articles.index', ['articles' => $articles]);
+    
+}
 
 
 
     public function create(){
         return view('articles.create', ['categories' => \App\Models\Category::all()]);
+
     }
 
     public function store(StoreArticleRequest $request){
+        $article = Article::create(array_merge($request->all(), ['user_id' => auth()->user()->id]));
 
-        $article = Article::create($request->all());
+        $article->categories()->attach($request->categories);
 
-        if($request->hasFile('image') && $request->file('image')->isValid()){
-          
+        // Qui ci assicuriamo che il file esista e sia stato caricato correttamente
+        if($request->hasFile('image') && $request->file('image')->isValid()) {
+            
+            $extension = $request->file('image')->extension();
 
+            $fileName = 'image.' . $extension;
 
-    $extension = $request->file('image')->extension();
-    $fileName = 'image.' .$extension;
-    $fileName = uniqid('image_'). '.' .$extension;
+            $fileName = $request->file('image')->getClientOriginalName();
 
+            $fileName = uniqid('image_') . '.' . $extension;
 
-  $article->image = $request->file('image')->storeAs('public/images/' .$article->id,$fileName);
-  $article->save();
+            // storeAs restituisce il percorso relativo, a partire da storage/app, del file salvato su disco
+            $article->image = $request->file('image')->storeAs('public/images/' . $article->id, $fileName);
 
-        }
+            $article->save();
+
+        }        
 
         return redirect()->route('articles.index')->with(['success' => 'Articolo creato correttamente!']);
-    
     }
 
     

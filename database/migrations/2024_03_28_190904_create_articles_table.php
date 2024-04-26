@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
             $table->string('title',150);
-            $table->string('category',50);
+         
             $table->string('description',255);
             $table->text('body',5000);
             $table->boolean('visible')->default(true);
@@ -28,5 +28,10 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('articles');
+        Schema::table('articles', function (Blueprint $table) {
+     
+
+            // $table->dropColumn('category');
+        });
     }
 };
