@@ -56,3 +56,5 @@ Route::get('/articolo/{article}',[PageController::class,'article'] )->name('arti
 Route::get('/counter',App\Livewire\Counter::class);
 
 Route::get('/cerca-utenti',[PageController::class,'searchUsers'])->name('users.search');
+
+Route::get('/cerca-articoli',[ArticleController::class,'search'])->name('articles.search');

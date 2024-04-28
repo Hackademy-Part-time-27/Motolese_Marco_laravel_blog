@@ -1,5 +1,5 @@
 <x-layout>
-        <span>{{$article->category->name}}
+        <span>{{$article['body']}}
 
         <h1 class="test">{{$article['title']}}</h1>
 

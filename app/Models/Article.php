@@ -22,12 +22,16 @@ class Article extends Model
         return $this->belongsTo(User::class);
     }
 
-    public static function search($search)
-    {
-        if($search == '') {
-            return [];
-        }
 
-        return self::where('title', 'LIKE', "%$search%")->get();          
+
+
+ public static function search($search)
+ {
+    if ($search == ' ' ){
+        return [];
     }
+    
+    return self::where('title','LIKE',"%$search%")->get();
+ }
+
 }

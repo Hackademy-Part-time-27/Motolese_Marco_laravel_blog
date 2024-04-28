@@ -17,8 +17,9 @@ class ArticleFactory extends Factory
     public function definition(): array
     {
         return [
-            'user' => 1,
+            'user_id' => rand(1,176),
             'title'=> fake()->words(5,true),
+            'body'=> fake()->words(5,true),
             'description' => fake()->words(10,true),
         ];
     }

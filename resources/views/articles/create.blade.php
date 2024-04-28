@@ -38,17 +38,17 @@
            @error('title') <p class="text-danger small fw-bold">{{$message}}</p> @enderror
         </div>
         <div class="col-12">
-                            <label for="categories">Categoria</label>
-                            @foreach($categories as $category)
-                            <div class="form-check">
-                                <input class="form-check-input" name="categories[]" type="checkbox" value="{{ $category->id }}">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    {{ $category->name }}
-                                </label>
-                            </div>
-                            @endforeach
-                            @error('categories') <span class="text-danger small fw-bold">{{ $message }}</span> @enderror
-                        </div>
+    <label for="categories">Categorie</label>
+    @foreach($categories as $category)
+    <div class="form-check">
+        <input class="form-check-input" name="categories[]" type="checkbox" value="{{ $category->id }}" id="category_{{ $category->id }}">
+        <label class="form-check-label" for="category_{{ $category->id }}">
+            {{ $category->name }}
+        </label>
+    </div>
+    @endforeach
+    @error('categories') <span class="text-danger small fw-bold">{{ $message }}</span> @enderror
+</div>
 
 
            <div class="col-12">
